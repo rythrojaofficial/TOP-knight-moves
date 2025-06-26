@@ -17,7 +17,8 @@ const knightMoves = [
     [-1,-2],
     [-2,1],
     [-2,-1]
-]
+];
+
 
 
 // define 2d array.  array of 8 arrays
@@ -28,9 +29,10 @@ for(let i = 0; i < 8; i++){
 console.log({'initialize board': board})
 
 
+const path = [];
+
 // add a single move 
 function addMove(x,y,step){
-    // (x >= 0 && x <= 7 && y >= 0 && y <= 7 && board[x][y] == null)
     console.log(`attempting to add ${x},${y} on step ${step}`)
     if(
         x>=0 && x<=7 // x from 0-7
@@ -65,7 +67,7 @@ function addPossibleKnightMoves(step){
 }
 
 //
-function findPath(startCoordinates = [], endCoordinates = []){
+export function findPath(startCoordinates = [], endCoordinates = []){
     // coordinates
     const startX = startCoordinates[0],
         startY = startCoordinates[1],
@@ -87,15 +89,32 @@ function findPath(startCoordinates = [], endCoordinates = []){
 
 }
 
-
-const startCoordinates = [3,3],
-    endCoordinates = [4,6];
-let thePath =  `path from ${startCoordinates} to ${endCoordinates}`;
-
-const test = {
-    // 'knightMoves': knightMoves,
-    // 'board': board
-   'path': findPath(startCoordinates,endCoordinates),
-   'board': board
+function areArraysEqual(arr1, arr2) {
+  if (arr1.length !== arr2.length) {
+    return false; // Different lengths, not equal
+  }
+  for (let i = 0; i < arr1.length; i++) {
+    if (arr1[i] !== arr2[i]) {
+      return false; // Elements at current index differ
+    }
+  }
+  return true; // All elements are equal
 }
-console.log(test)
+
+
+
+// const startCoordinates = [3,3],
+//     endCoordinates = [4,3];
+// let thePath =  `path from ${startCoordinates} to ${endCoordinates}`;
+
+// const test = {
+//     // 'knightMoves': knightMoves,
+//     // 'board': board
+//    'steps': findPath(startCoordinates,endCoordinates),
+//    'board': board,
+//    'path': path
+
+// }
+// console.log(test)
+// let zPath = new Path(startCoordinates, endCoordinates, path);
+
